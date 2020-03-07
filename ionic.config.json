@@ -1,5 +1,8 @@
 {
   "name": "fitApp",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "e645fc5e"
 }
