@@ -7,17 +7,49 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+  <ion-tabs>
+    <!-- Tab bar -->
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="account">
+        <ion-icon name="person"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="contact">
+        <ion-icon name="call"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
   <section>
     <ion-item>
       <ion-label position="floating">Title</ion-label>
-      <ion-input clearInput value="" aria-placeholder="Title" ></ion-input>
+      <ion-input clearInput value="" [(ngModel)]="title" aria-placeholder="Title" ></ion-input>
     </ion-item>
-    
+    <ion-item>
+      <ion-label position="floating">Ingredients</ion-label>
+      <ion-input clearInput value="" [(ngModel)]="ingInput" aria-placeholder="Ingredients" (keyup.enter)="addIngredients(event)"></ion-input>
+    </ion-item>
+      <ion-chip *ngFor="let ing of ingList">
+        <ion-label>{{ing}}</ion-label>
+      </ion-chip>
+
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select placeholder="Select One" [(ngModel)]="type">
+          <ion-select-option value="veg">Veg</ion-select-option>
+          <ion-select-option value="nonveg">Non-Veg</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Meal Type</ion-label>
+        <ion-select multiple="true" [value]="" [(ngModel)]="mtype">
+          <ion-select-option value="breakfast">Breakfast</ion-select-option>
+          <ion-select-option value="lunch">Lunch</ion-select-option>
+          <ion-select-option value="dinner">Dinner</ion-select-option>
+          <ion-select-option value="snacks">Snacks</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" (click)="submitIng()">Add</ion-button>
   </section>
 </ion-content>
